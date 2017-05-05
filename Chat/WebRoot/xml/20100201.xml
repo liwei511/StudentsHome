@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chat>
+  <messages>
+    <message>
+      <from>[系统公告]</from>
+      <face />
+      <to />
+      <content>&lt;font color='gray'&gt;lyq走进了聊天室！&lt;/font&gt;</content>
+      <sendTime>2010-2-1 16:44:38</sendTime>
+      <isPrivate>false</isPrivate>
+    </message>
+    <message>
+      <from>[系统公告]</from>
+      <face />
+      <to />
+      <content>&lt;font color='gray'&gt;aa走进了聊天室！&lt;/font&gt;</content>
+      <sendTime>2010-2-1 16:44:55</sendTime>
+      <isPrivate>false</isPrivate>
+    </message>
+  </messages>
+</chat>
+

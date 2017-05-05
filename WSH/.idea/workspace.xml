@@ -1,7 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e2906a4b-19a5-4a08-8c0d-dfe173dae1fe" name="Default" comment="" />
+    <list default="true" id="e2906a4b-19a5-4a08-8c0d-dfe173dae1fe" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_me/images/Thumbs.db" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_me/images/close.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_me/images/contentsBg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_me/images/gridmenu-child.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_me/images/ico-8.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_me/images/ico.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_me/images/lift_bg_1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_me/images/lift_bg_2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_me/images/lift_bg_3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_me/images/loadingBar.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_me/images/me.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_me/images/star-flash-1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_me/images/star-flash-2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_me/images/star-fly-1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_school/assets/fonts/icomoon.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_school/assets/fonts/icomoon.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_school/assets/fonts/icomoon.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_school/img/1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_school/img/2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_school/img/xiaohui.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_school/img/xiaohui.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/hezuo/images/360.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/hezuo/images/360game.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/hezuo/images/fenghuan.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/hezuo/images/jd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/hezuo/images/renren.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/hezuo/images/souhu.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/hezuo/images/taobao.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/hezuo/images/wangyi.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/hezuo/images/xinlan.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/hezuo/images/youku.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GAME/qiubai/images/demo2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GAME/qiubai/images/dui1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GAME/qiubai/images/one.jpeg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GAME/qiubai/images/p1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GAME/qiubai/images/t1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GAME/qiubai/images/t10.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GAME/qiubai/images/t2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GAME/qiubai/images/t3.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GAME/qiubai/images/t4.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GAME/qiubai/images/t6.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GAME/qiubai/images/t7.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GAME/qiubai/images/t8.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GAME/qiubai/images/t9.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GAME/qiubai/images/x1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GAME/qiubai/images/x11.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GAME/qiubai/images/x12.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GAME/qiubai/images/x13.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GAME/qiubai/images/x14.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GAME/qiubai/images/x15.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GAME/qiubai/images/x16.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/font/navicon.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/font/navicon.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/font/navicon.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/WSH.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_me/css/main.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_me/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_me/js/fun.base.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_me/js/global.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_me/js/home.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_me/js/jQuery.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_me/js/julying.gridmenu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_me/js/julying.planettravel.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_school/assets/css/default.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_school/assets/css/style.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_school/assets/fonts/icomoon.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_school/assets/js/bundle.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_school/assets/js/fsvs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_school/assets/js/jquery-migrate-1.2.1.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_school/assets/js/jquery.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_school/assets/js/jquery.swipe-events.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_school/assets/js/main.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_school/assets/js/prismjs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/about_school/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/hezuo/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ABOUT/hezuo/js/jq.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/app.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/app.min.css.bak" />
+    </list>
     <ignored path="WSH.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -199,6 +282,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="e2906a4b-19a5-4a08-8c0d-dfe173dae1fe" name="Default" comment="" />
@@ -206,15 +292,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1493952931004</updated>
-      <workItem from="1493952932511" duration="6018000" />
+      <workItem from="1493952932511" duration="6079000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6018000" />
+    <option name="totallyTimeSpent" value="6079000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="776" extended-state="7" />
+    <frame x="-8" y="-8" width="1296" height="776" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2027027" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
