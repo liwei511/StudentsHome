@@ -1,0 +1,2 @@
+把IdeaProjects文件夹放到D盘根目录中，运行学生家园。
+学生家园中“聊天室”模块，需要在Myeclipse上加载Chat项目，运行到tomcat。浏览器运行http://localhost:8080/Chat ，或者在“学生家园中运行。
