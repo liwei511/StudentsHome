@@ -1,0 +1,532 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<title>那天年我们一起笑过的段子</title>
+	<link rel="stylesheet" type="text/css" href="style/base.css">
+	<link rel="stylesheet" type="text/css" href="style/index.css">
+	<!--[if lt IE 9]>
+		<script src="js/css3-mediaqueries.js"></script>
+	<![endif]-->
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="js/jQueryColor.js"></script>
+	<!--这个插件是瀑布流主插件函数必须-->
+	<script type="text/javascript" src="js/jquery.masonry.min.js"></script>
+	<!--这个插件只是为了扩展jquery的animate函数动态效果可有可无-->
+	<script type="text/javascript" src="js/jQeasing.js"></script>
+	<script type="text/javascript">
+	/*
+		抛开瀑布流布局各种乱七八糟的算法，基于masonry的瀑布流，很是简单的，而且通过扩展animate,能实现瀑布流布局的晃动、弹球等效果。
+		masonry还有很多参数我这里注解了常用的参数
+	 */
+		$(function(){
+				/*瀑布流开始*/
+				var container = $('.waterfull ul');
+				var loading=$('#imloading');
+				// 初始化loading状态
+				loading.data("on",true);
+				/*判断瀑布流最大布局宽度，最大为1280*/
+				function tores(){
+					var tmpWid=$(window).width();
+					if(tmpWid>1280){
+						tmpWid=1280;
+					}else{
+						var column=Math.floor(tmpWid/320);
+						tmpWid=column*320;
+					}
+					$('.waterfull').width(tmpWid);
+				}
+				tores();
+				$(window).resize(function(){
+					tores();
+				});
+				container.imagesLoaded(function(){
+				  container.masonry({
+				  	columnWidth: 320,
+				    itemSelector : '.item',
+				    isFitWidth: true,//是否根据浏览器窗口大小自动适应默认false
+				    isAnimated: true,//是否采用jquery动画进行重拍版
+				    isRTL:false,//设置布局的排列方式，即：定位砖块时，是从左向右排列还是从右向左排列。默认值为false，即从左向右
+				    isResizable: true,//是否自动布局默认true
+				    animationOptions: {
+						duration: 800,
+						easing: 'easeInOutBack',//如果你引用了jQeasing这里就可以添加对应的动态动画效果，如果没引用删除这行，默认是匀速变化
+						queue: false//是否队列，从一点填充瀑布流
+					}
+				  });
+				});
+				/*模拟从后台获取到的数据*/
+				var sqlJson=[{'title':'家园笑料','intro':'哈哈哈哈，不开心是一天，开心也是一天，为什么不天天开心呢……欢迎想站长推送优秀笑料','src':'images/one.jpeg','writer':'学生家园','date':'2小时前','looked':321},{'title':'家园趣事！','intro':'找了个新工作，很开心便在朋友圈发布：今天找了个新工作，加油！ 然后第二天一大早一朋友回复我说：加油站上班注意安全！','src':'images/demo2.jpg','writer':'学生家园','date':'2小时前','looked':321},{'title':'家园趣事！','intro':'找了个新工作，很开心便在朋友圈发布：今天找了个新工作，加油！ 然后第二天一大早一朋友回复我说：加油站上班注意安全！','src':'images/p1.jpg','writer':'学生家园','date':'2小时前','looked':321},{'title':'家园趣事！','intro':'爆料了，苏亚雷斯又咬人啦，C罗哪有内马尔帅，梅西今年要不夺冠，你就去泰国吧，老子买了阿根廷赢得彩票，输了就去不成了。','src':'images/p1.jpg','writer':'学生家园','date':'1小时前','looked':321}];
+				/*本应该通过ajax从后台请求过来类似sqljson的数据然后，便利，进行填充，这里我们用sqlJson来模拟一下数据*/
+				$(window).scroll(function(){
+					if(!loading.data("on")) return;
+					// 计算所有瀑布流块中距离顶部最大，进而在滚动条滚动时，来进行ajax请求，方法很多这里只列举最简单一种，最易理解一种
+					var itemNum=$('#waterfull').find('.item').length;
+					var itemArr=[];
+					itemArr[0]=$('#waterfull').find('.item').eq(itemNum-1).offset().top+$('#waterfull').find('.item').eq(itemNum-1)[0].offsetHeight;
+					itemArr[1]=$('#waterfull').find('.item').eq(itemNum-2).offset().top+$('#waterfull').find('.item').eq(itemNum-1)[0].offsetHeight;
+					itemArr[2]=$('#waterfull').find('.item').eq(itemNum-3).offset().top+$('#waterfull').find('.item').eq(itemNum-1)[0].offsetHeight;
+					var maxTop=Math.max.apply(null,itemArr);
+					if(maxTop<$(window).height()+$(document).scrollTop()){
+						//加载更多数据
+						loading.data("on",false).fadeIn(800);
+						(function(sqlJson){
+							/*这里会根据后台返回的数据来判断是否你进行分页或者数据加载完毕这里假设大于30就不在加载数据*/
+							if(itemNum>30){
+								loading.text('没笑够吗？就有这么多了！欢迎投稿哦');
+							}else{
+								var html="";
+								for(var i in sqlJson){
+									html+="<li class='item'><a href='http://www.datouwang.com/' class='a-img'><img src='"+sqlJson[i].src+"'></a>";
+									html+="<h2 class='li-title'>"+sqlJson[i].title+"</h2>";
+									html+="<p class='description'>"+sqlJson[i].intro+"</p><div class='qianm clearfloat'>";
+									html+="<span class='sp1'><b>"+sqlJson[i].looked+"</b>浏览</span>";
+									html+="<span class='sp2'>"+sqlJson[i].writer+"</span><span class='sp3'>"+sqlJson[i].date+"&nbsp;By</span></div></li>";		
+								}
+								/*模拟ajax请求数据时延时800毫秒*/
+								var time=setTimeout(function(){
+									$(html).find('img').each(function(index){
+										loadImage($(this).attr('src'));
+									})
+									var $newElems = $(html).css({ opacity: 0}).appendTo(container);
+									$newElems.imagesLoaded(function(){
+										$newElems.animate({ opacity: 1},800);
+										container.masonry( 'appended', $newElems,true);
+										loading.data("on",true).fadeOut();
+										clearTimeout(time);
+							        });
+								},800)
+							}
+						})(sqlJson);
+					}
+				});
+				function loadImage(url) {
+				     var img = new Image(); 
+				     //创建一个Image对象，实现图片的预下载
+				      img.src = url;
+				      if (img.complete) {
+				         return img.src;
+				      }
+				      img.onload = function () {
+				       	return img.src;
+				      };
+				 };
+				 loadImage('images/one.jpeg');
+				/*item hover效果*/
+				var rbgB=['#71D3F5','#F0C179','#F28386','#8BD38B'];
+				$('#waterfull').on('mouseover','.item',function(){
+					var random=Math.floor(Math.random() * 4);
+					$(this).stop(true).animate({'backgroundColor':rbgB[random]},1000);
+				});
+				$('#waterfull').on('mouseout','.item',function(){
+					$(this).stop(true).animate({'backgroundColor':'#fff'},1000);
+				});
+		})
+    </script>
+</head>
+<body>
+	<div class="content">
+		<!-- 瀑布流样式开始 -->
+		<div class="waterfull clearfloat" id="waterfull">
+			<ul>
+				<li class="item">
+					<a  class="a-img">
+						<img src="images/t1.jpg" alt="">
+						
+					</a>
+					<h2 class="li-title" title="家园笑料">家园笑料</h2>
+					<p class="description">跟二货朋友拍照是一种什么感觉</p>
+					<div class="qianm clearfloat">
+						
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/t2.jpg" alt="">
+						
+					</a>
+					<h2 class="li-title" title="我要买两根油条">我要买两根油条</h2>
+					<p class="description">老板，今天有100根油条吗？老板说没有.第二天那个小姑娘又来问，今天有100根油条吗？老板又说没有.第三天那个小姑娘又来问，老板今天有100根油条吗？这一次老板说有了有了，我们专门为你熬夜做了100根油条.小姑娘说的太好了，我买两根.老板……</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/x1.jpg" alt="">
+						
+					</a>
+					<h2 class="li-title" title="我挣你比你容易">我挣你比你容易</h2>
+					<p class="description">一位盲人打车，至下车计价器显示11.4元，老司机把他扶至小区保安处，只说，我不收你钱是因为我比你挣钱容易。从小区内走出一斯文大叔，上车，一路畅谈，至下车计价器显示14.5，下车时掏出30，道：“这钱还有刚才那位的，我也不伟大，但挣钱比您也容易点，就希望您继续做好事吧！</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/x2.jpg" alt="">
+						
+					</a>
+					<h2 class="li-title" title="感觉很有深意">感觉很有深意</h2>
+					<p class="description">某天上课，老师让用两个字来形容你眼中的爱情。有个同学上去，在黑板上写下“瓶邪。”老师问道该如何解释。 同学很淡定，回答道:“瓶字，可以拆分为并瓦，意为并肩屋檐下。邪字，牙耳，可以理解为鬓边私语。两个字合起来，意思就是，我与你，在屋檐下并肩而坐，悄悄地在耳边说着些别人不懂的秘密。”</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/t3.gif" alt="">
+						
+					</a>
+					<h2 class="li-title" title="加油">加油</h2>
+					<p class="description">找了个新工作，很开心便在朋友圈发布：今天找了个新工作，加油！ 然后第二天一大早一朋友回复我说：加油站上班注意安全！</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/t4.jpg" alt="">	
+					</a>
+					<h2 class="li-title" title="肯德基送的">肯德基送的</h2>
+					<p class="description">大雨刚晴，我去肯德基买了个全家桶，走到门口的时候，地上有水没注意，脚一滑，两手惯性把全家桶举了起来，身子往下一跪到了一个妹子面前～正当我们面面相顾一脸惊愕的时候，店里突然响起了雷呜般掌声。。。</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/x3.gif" alt="">
+						
+					</a>
+					<h2 class="li-title" title="这真是个悲伤的故事哟">这真是个悲伤的故事哟</h2>
+					<p class="description">从前有个学生叫斯第夫，有一天，他正顶着三吨的作业往家赶，突然，他头一滑作业掉下来。他望在掉在湖底的作业心想该怎么办呢？这时湖里缓缓游出一个人，他就是河神。河神问：“年轻的学生哟，你掉的是这个四吨的作业还是这个八吨的作业呢？”学生诚实的回答说：“是三吨的。”“很好！你是个诚实的孩子！”河神点头说：“那么我把这四吨和八吨的作业都送给你吧！”</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/x4.gif" alt="">
+						
+					</a>
+					<h2 class="li-title" title="看来关系比较硬">看来关系比较硬</h2>
+					<p class="description">今天老板开会说到：咱们单位员工一定要团结，我们好比一个键盘，所有的的人都好比按键，一个萝卜一个坑、都是不可缺少的。一同事说到：那老板我是什么按键那？老板说：你就像F7，占个地方，到现在我都不知道你能干什么用！</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/dui1.jpg" alt="">
+						
+					</a>
+					<h2 class="li-title" title="有人">有人</h2>
+					<p class="description">我一个哥们，一天我们在一起喝酒，喝完酒他还坚持开车回家，我们就劝他，现在查酒驾那么严就不要开车了，谁知他说，没事咱交通队有人，我们都在惊讶以前怎么没听他说过这事时，他又接着说，我大爷前天酒驾刚抓进去。</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/t6.jpg" alt="">
+						
+					</a>
+					<h2 class="li-title" title="耽误上飞机你陪啊">耽误上飞机你陪啊</h2>
+					<p class="description">旅行箱过安检处时安检员问我：有电脑没？我回答：有。安检员：拿出来。我：来不及，我登机来不及了。安检员：就几分钟而已，请配合。我：我家离机场100多公里。安检员：和你家离机场多远有关系吗？我：电脑在我房间呢。</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/x5.gif" alt="">
+						
+					</a>
+					<h2 class="li-title" title="长痛不如短痛">长痛不如短痛</h2>
+					<p class="description">今天在餐馆，看旁边一位哥们点了一碗面，吃的很快……我猜他点的面很好吃，就也点了一份，但面端上来后吃了一口就不想吃了，因为味道不怎么好……我就问旁边的哥们，这面好吃吗，你吃这么快，看起来很香的样子……哥们说，不好吃，我吃这么快是长痛不如短痛……</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/x6.gif" alt="">
+						
+					</a>
+					<h2 class="li-title" title="让你调皮">让你调皮</h2>
+					<p class="description">小明正在房间里看古文，爸爸走过来，说：“小明，你在看什么?”小明说：“古文。”爸爸说：“什么？”小明说：“古文。”爸爸说：“你再说一遍？”小明说，“古文。”之后，小明就被打了一顿。</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/t7.jpg" alt="">
+						
+					</a>
+					<h2 class="li-title" title="机智得人啊">机智得人啊</h2>
+					<p class="description">一哥们晚上酒后驾驶，遇到交警查车，哥们推开门就跑，交警 没有追上，这哥们边跑边给老婆打电话，让老婆报警说家里车被盗了，第二天，车找到了，交警说，昨晚那小子跑太快了，一看就不是好人，不创新怎么有出路</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/t8.jpg" alt="">
+						
+					</a>
+					<h2 class="li-title" title="放屁。。。">放屁。。。</h2>
+					<p class="description">我是一个公交车司机。有一天吃坏了肚子，想放屁。于是我就在放屁的时候狂按喇叭。放了好几个，呵呵，好爽！我正要再放一个的时候，正要按喇叭。这时，一个老奶奶走过来扇了我一巴掌说：你小子别按喇叭了，你知道吗？你一按喇叭车厢里就好臭。</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/x7.gif" alt="">
+						
+					</a>
+					<h2 class="li-title" title="家园笑料">家园笑料</h2>
+					<p class="description">不开心是一天，开心也是一天，为什么不天天开心呢……欢迎想站长推送优秀笑料</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/x8.gif" alt="">
+						
+					</a>
+					<h2 class="li-title" title="家园笑料">家园笑料</h2>
+					<p class="description">不开心是一天，开心也是一天，为什么不天天开心呢……欢迎想站长推送优秀笑料</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/t9.jpg" alt="">
+						
+					</a>
+					<h2 class="li-title" title="家园笑料">家园笑料</h2>
+					<p class="description">不开心是一天，开心也是一天，为什么不天天开心呢……欢迎想站长推送优秀笑料</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/t10.jpg" alt="">
+						
+					</a>
+					<h2 class="li-title" title="家园笑料">家园笑料</h2>
+					<p class="description">不开心是一天，开心也是一天，为什么不天天开心呢……欢迎想站长推送优秀笑料</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/x9.gif" alt="">
+						
+					</a>
+					<h2 class="li-title" title="家园笑料">家园笑料</h2>
+					<p class="description">不开心是一天，开心也是一天，为什么不天天开心呢……欢迎想站长推送优秀笑料</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/x17.gif" alt="">
+						
+					</a>
+					<h2 class="li-title" title="家园笑料">家园笑料</h2>
+					<p class="description">不开心是一天，开心也是一天，为什么不天天开心呢……欢迎想站长推送优秀笑料</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/x11.gif" alt="">
+						
+					</a>
+					<h2 class="li-title" title="家园笑料">家园笑料</h2>
+					<p class="description">不开心是一天，开心也是一天，为什么不天天开心呢……欢迎想站长推送优秀笑料</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/x12.gif" alt="">
+						
+					</a>
+					<h2 class="li-title" title="家园笑料">家园笑料</h2>
+					<p class="description">不开心是一天，开心也是一天，为什么不天天开心呢……欢迎想站长推送优秀笑料</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/x13.gif" alt="">
+						
+					</a>
+					<h2 class="li-title" title="家园笑料">家园笑料</h2>
+					<p class="description">不开心是一天，开心也是一天，为什么不天天开心呢……欢迎想站长推送优秀笑料</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/x14.gif" alt="">
+						
+					</a>
+					<h2 class="li-title" title="家园笑料">家园笑料</h2>
+					<p class="description">不开心是一天，开心也是一天，为什么不天天开心呢……欢迎想站长推送优秀笑料</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/x15.gif" alt="">
+						
+					</a>
+					<h2 class="li-title" title="家园笑料">家园笑料</h2>
+					<p class="description">不开心是一天，开心也是一天，为什么不天天开心呢……欢迎想站长推送优秀笑料</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/x16.gif" alt="">
+						
+					</a>
+					<h2 class="li-title" title="家园笑料">家园笑料</h2>
+					<p class="description">不开心是一天，开心也是一天，为什么不天天开心呢……欢迎想站长推送优秀笑料</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/x17.gif" alt="">
+						
+					</a>
+					<h2 class="li-title" title="家园笑料">家园笑料</h2>
+					<p class="description">不开心是一天，开心也是一天，为什么不天天开心呢……欢迎想站长推送优秀笑料</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+					<li class="item">
+					<a class="a-img">
+						<img src="images/x18.gif" alt="">
+						
+					</a>
+					<h2 class="li-title" title="家园笑料">家园笑料</h2>
+					<p class="description">不开心是一天，开心也是一天，为什么不天天开心呢……欢迎想站长推送优秀笑料</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/x19.gif" alt="">
+						
+					</a>
+					<h2 class="li-title" title="家园笑料">家园笑料</h2>
+					<p class="description">不开心是一天，开心也是一天，为什么不天天开心呢……欢迎想站长推送优秀笑料</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a class="a-img">
+						<img src="images/x20.gif" alt="">
+						
+					</a>
+					<h2 class="li-title" title="家园笑料">家园笑料</h2>
+					<p class="description">不开心是一天，开心也是一天，为什么不天天开心呢……欢迎想站长推送优秀笑料</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">学生家园</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				</li>
+			</ul>
+		</div>
+		<!-- loading按钮自己通过样式调整 -->
+		<div id="imloading" style="width:150px;height:30px;line-height:30px;font-size:16px;text-align:center;border-radius:3px;opacity:0.7;background:#000;margin:10px auto 30px;color:#fff;display:none">
+		学生家园加载中.....
+		</div>
+	</div>
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+</div>
+</body>
+</html>

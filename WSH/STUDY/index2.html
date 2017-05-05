@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>家园测试</title>
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.3.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/style2.css" />
+		<link rel="stylesheet" type="text/css" href="style.css" />
+
+		<style type="text/css">
+			.demo{width:750px; margin:60px auto 10px auto}
+		</style>
+
+		<script type="text/javascript" src="jquery.min.js"></script>
+		<script type="text/javascript" src="quiz.js"></script>
+		<script type="text/javascript">
+			var init={'questions':[{'question':'jQuery是什么？','answers':['JavaScript库','CSS库','PHP框架','以上都不是'],'correctAnswer':1},{'question':'java是什么？','answers':['JavaScript库','CSS库','PHP框架','以上都不是'],'correctAnswer':4},{'question':'找出不同类的一项?','answers':['写字台','沙发','电视','桌布'],'correctAnswer':3},{'question':'国土面积最大的国家是：','answers':['美国','中国','俄罗斯','加拿大'],'correctAnswer':3},{'question':'月亮距离地球多远？','answers':['18万公里','38万公里','100万公里','180万公里'],'correctAnswer':2}]};
+
+			$(function(){
+				$('#quiz-container').jquizzy({
+					questions: init.questions
+				});
+			});
+		</script>
+		<script src="js/modernizr.custom.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<button id="menu-toggle" class="menu-toggle"><span>Menu</span></button>
+			<div id="theSidebar" class="sidebar">
+				<button class="close-button fa fa-fw fa-close"></button>
+				<h1>
+					<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+						<p>心在哪里，路就在哪里</p>
+						<p>人往高处走，唯一的途径就是你不断的学习。每天学习一点点，每天进步一点点。</p>
+						<p><a href="http://sc.chinaz.com/" target="_blank">返回首页</a></p>
+					</div>
+				</h1>
+				<nav class="codrops-demos">
+					<a href="index.html">学习</a>
+					<a class="current-demo" href="index2.html">测试</a>
+				</nav>
+			</div>
+			<div id="theGrid" class="main">
+				<section class="grid">
+					<header class="top-bar">
+					</header>
+					<a class="grid__item" href="#">
+						<div class="meta meta--preview">
+							<img class="meta__avatar" src="img/video/t5.png" alt="t5" /> 
+							<span class="meta__date"><i class="fa fa-calendar-o"></i> Html</span>
+							<span class="meta__reading-time"><i class="fa fa-clock-o"></i> 10 min read</span>
+						</div>
+					</a>
+					<a class="grid__item" href="#">
+						<div class="meta meta--preview">
+							<img class="meta__avatar" src="img/video/t1.png" alt="t1" /> 
+							<span class="meta__date"><i class="fa fa-calendar-o"></i> Android</span>
+							<span class="meta__reading-time"><i class="fa fa-clock-o"></i> 10 min read</span>
+						</div>
+					</a><a class="grid__item" href="#">
+						<div class="meta meta--preview">
+							<img class="meta__avatar" src="img/video/t2.png" alt="t2" /> 
+							<span class="meta__date"><i class="fa fa-calendar-o"></i> IOS</span>
+							<span class="meta__reading-time"><i class="fa fa-clock-o"></i> 10 min read</span>
+						</div>
+					</a><a class="grid__item" href="#">
+						<div class="meta meta--preview">
+							<img class="meta__avatar" src="img/video/t3.png" alt="t3" /> 
+							<span class="meta__date"><i class="fa fa-calendar-o"></i> C</span>
+							<span class="meta__reading-time"><i class="fa fa-clock-o"></i> 10 min read</span>
+						</div>
+					</a><a class="grid__item" href="#">
+						<div class="meta meta--preview">
+							<img class="meta__avatar" src="img/video/t4.png" alt="t4" /> 
+							<span class="meta__date"><i class="fa fa-calendar-o"></i> Java</span>
+							<span class="meta__reading-time"><i class="fa fa-clock-o"></i> 10 min read</span>
+						</div>
+					</a><a class="grid__item" href="#">
+						<div class="meta meta--preview">
+							<img class="meta__avatar" src="img/video/t6.png" alt="t6" /> 
+							<span class="meta__date"><i class="fa fa-calendar-o"></i>CSS</span>
+							<span class="meta__reading-time"><i class="fa fa-clock-o"></i> 10 min read</span>
+						</div>
+					</a><a class="grid__item" href="#">
+						<div class="meta meta--preview">
+							<img class="meta__avatar" src="img/video/t7.png" alt="t7" /> 
+							<span class="meta__date"><i class="fa fa-calendar-o"></i>JavaScript</span>
+							<span class="meta__reading-time"><i class="fa fa-clock-o"></i> 10 min read</span>
+						</div>
+					</a><a class="grid__item" href="#">
+						<div class="meta meta--preview">
+							<img class="meta__avatar" src="img/video/t8.png" alt="t8" /> 
+							<span class="meta__date"><i class="fa fa-calendar-o"></i>Java Web</span>
+							<span class="meta__reading-time"><i class="fa fa-clock-o"></i> 10 min read</span>
+						</div>
+					</a>
+					<footer class="page-meta">
+						<span>Load more...</span>
+					</footer>
+				</section>
+				<section class="content">
+					<div class="scroll-wrap">
+						<article class="content__item" href="../3study/test_index.html">
+							<div class="demo">
+								<div id='quiz-container'></div>
+							</div>
+
+							<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+							</div>
+							</article>
+							<article class="content__item" href="../3study/test_index.html">
+							<div class="demo">
+								<div id='quiz-container'></div>
+							</div>
+
+							<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+							</div>
+							</article>
+							<article class="content__item" href="../3study/test_index.html">
+							<div class="demo">
+								<div id='quiz-container'></div>
+							</div>
+
+							<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+							</div>
+							</article>
+							<article class="content__item" href="../3study/test_index.html">
+							<div class="demo">
+								<div id='quiz-container'></div>
+							</div>
+
+							<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+							</div>
+							</article>
+							<article class="content__item" href="../3study/test_index.html">
+							<div class="demo">
+								<div id='quiz-container'></div>
+							</div>
+
+							<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+							</div>
+							</article>
+							<article class="content__item" href="../3study/test_index.html">
+							<div class="demo">
+								<div id='quiz-container'></div>
+							</div>
+
+							<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+							</div>
+							</article>
+							<article class="content__item" href="../3study/test_index.html">
+							<div class="demo">
+								<div id='quiz-container'></div>
+							</div>
+
+							<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+							</div>
+							</article>
+							<article class="content__item" href="../3study/test_index.html">
+							<div class="demo">
+								<div id='quiz-container'></div>
+							</div>
+
+							<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+							</div>
+							</article>
+						
+					</div>
+					<button class="close-button"><i class="fa fa-close"></i><span>Close</span></button>
+				</section>
+			</div>
+		</div><!-- /container -->
+		<script src="js/classie.js"></script>
+		<script src="js/main.js"></script>
+	</body>
+</html>
